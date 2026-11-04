@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusConnect | Events & Training</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">C</span><span>Campus<span class="brand-light">Connect</span></span></div>
+    <div class="workspace-label">WORKSPACE</div>
+    <nav class="side-nav" aria-label="Main navigation">
+      <button class="nav-item active" data-page="overview"><span>▦</span> Overview</button>
+      <button class="nav-item" data-page="training"><span>◫</span> Training</button>
+      <button class="nav-item" data-page="jobs"><span>▤</span> Job descriptions</button>
+      <button class="nav-item" data-page="events"><span>◷</span> Events (EMS)</button>
+      <button class="nav-item" data-page="chat"><span>▧</span> Chat <span class="nav-count">2</span></button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="help-card"><div class="help-icon">?</div><strong>Need help?</strong><p>Visit the help centre for tips and support.</p><button id="helpBtn">Open help centre ↗</button></div>
+      <div class="profile"><div class="avatar">MR</div><div><strong>Madhu Raju</strong><small>Student workspace</small></div><span class="profile-menu">•••</span></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">☰</button>
+      <div class="breadcrumb">Workspace <span>/</span> <strong id="crumb">Overview</strong></div>
+      <div class="top-actions"><button class="icon-btn" id="notificationsBtn" aria-label="Notifications">♧<i></i></button><div class="avatar small">MR</div></div>
+    </header>
+
+    <section class="page active" id="page-overview">
+      <div class="welcome-row"><div><p class="eyebrow">MONDAY, NOVEMBER 2, 2026</p><h1>Good afternoon, Madhu <span class="wave">✦</span></h1><p class="subheading">Here’s what’s happening in your learning and career space.</p></div><button class="btn primary" data-goto="events">＋ Explore events</button></div>
+      <div class="hero">
+        <div class="hero-content"><span class="hero-tag">YOUR NEXT OPPORTUNITY</span><h2>Learn something new.<br/>Build what’s next.</h2><p>Discover practical training, career opportunities, and events designed to help you grow.</p><button class="btn hero-btn" data-goto="training">Explore training <span>→</span></button></div>
+        <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="art-card card-a">✦<small>LEARN</small></div><div class="art-card card-b">↗<small>GROW</small></div><div class="art-center">CC</div><div class="art-dot dot-one"></div><div class="art-dot dot-two"></div></div>
+      </div>
+      <div class="stats-grid">
+        <article class="stat-card"><div class="stat-top"><span>Available trainings</span><span class="stat-icon purple">◫</span></div><strong id="trainingStat">06</strong><small><span class="positive">↗ Explore</span> learning paths</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Open opportunities</span><span class="stat-icon blue">▤</span></div><strong id="jobStat">04</strong><small>Roles to kick-start your career</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Upcoming events</span><span class="stat-icon orange">◷</span></div><strong id="eventStat">03</strong><small>Don't miss the next deadline</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Unread messages</span><span class="stat-icon green">▧</span></div><strong id="messageStat">02</strong><small>Stay connected with your team</small></article>
+      </div>
+      <div class="section-heading"><div><h2>Explore your workspace</h2><p>Everything you need, in one place.</p></div><button class="text-btn" data-goto="training">View all modules →</button></div>
+      <div class="module-grid">
+        <button class="module-card" data-goto="training"><div class="module-icon purple">◫</div><div><h3>Training</h3><p>Build in-demand skills with guided learning programs.</p><span>Browse programs →</span></div></button>
+        <button class="module-card" data-goto="jobs"><div class="module-icon blue">▤</div><div><h3>Job descriptions</h3><p>Find roles that match your interests and skills.</p><span>Explore jobs →</span></div></button>
+        <button class="module-card" data-goto="events"><div class="module-icon orange">◷</div><div><h3>Events (EMS)</h3><p>Discover workshops, webinars, and campus events.</p><span>See events →</span></div></button>
+        <button class="module-card" data-goto="chat"><div class="module-icon green">▧</div><div><h3>Chat</h3><p>Keep conversations and team updates together.</p><span>Open messages →</span></div></button>
+      </div>
+      <div class="section-heading lower"><div><h2>Coming up next</h2><p>Keep an eye on these dates.</p></div><button class="text-btn" data-goto="events">All events →</button></div>
+      <div id="upcomingList" class="upcoming-list"></div>
+    </section>
+
+    <section class="page" id="page-training">
+      <div class="page-heading"><div><p class="eyebrow">LEARN & GROW</p><h1>Training programs</h1><p class="subheading">Practical programs to build your skills and confidence.</p></div><button class="btn primary" id="addTrainingBtn">＋ Add training</button></div>
+      <div class="filter-row"><label class="search-box">⌕ <input id="trainingSearch" type="search" placeholder="Search training programs..." /></label><select id="trainingCategory" aria-label="Filter by category"><option value="all">All categories</option><option>Technology</option><option>Career</option><option>Analytics</option><option>Design</option></select><select id="trainingLevel" aria-label="Filter by level"><option value="all">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div>
+      <div class="results-line"><span id="trainingResultCount">6 programs</span><span>Curated for your growth</span></div>
+      <div id="trainingGrid" class="content-grid"></div>
+    </section>
+
+    <section class="page" id="page-jobs">
+      <div class="page-heading"><div><p class="eyebrow">CAREER OPPORTUNITIES</p><h1>Job descriptions</h1><p class="subheading">Explore roles, understand requirements, and save opportunities.</p></div><button class="btn primary" id="addJobBtn">＋ Add job</button></div>
+      <div class="filter-row"><label class="search-box">⌕ <input id="jobSearch" type="search" placeholder="Search roles or companies..." /></label><select id="jobType" aria-label="Filter by job type"><option value="all">All job types</option><option>Internship</option><option>Full-time</option><option>Part-time</option></select><select id="jobLocation" aria-label="Filter by location"><option value="all">All locations</option><option>Remote</option><option>Hyderabad</option><option>Bengaluru</option></select></div>
+      <div class="results-line"><span id="jobResultCount">4 opportunities</span><span>Review eligibility before applying</span></div>
+      <div id="jobsList" class="jobs-list"></div>
+    </section>
+
+    <section class="page" id="page-events">
+      <div class="page-heading"><div><p class="eyebrow">EVENT MANAGEMENT SYSTEM</p><h1>Events & activities</h1><p class="subheading">Register for workshops, meetups, and learning experiences.</p></div><button class="btn primary" id="addEventBtn">＋ Create event</button></div>
+      <div class="event-banner"><div><span class="hero-tag">SAVE YOUR SPOT</span><h2>Make time for what moves you forward.</h2><p>Explore upcoming sessions and keep track of registration deadlines.</p></div><div class="banner-symbol">◷</div></div>
+      <div class="filter-row"><label class="search-box">⌕ <input id="eventSearch" type="search" placeholder="Search events..." /></label><select id="eventType" aria-label="Filter events"><option value="all">All event types</option><option>Workshop</option><option>Webinar</option><option>Networking</option><option>Competition</option></select><select id="eventStatus" aria-label="Filter event status"><option value="all">All events</option><option value="registered">My registrations</option><option value="open">Registration open</option></select></div>
+      <div class="results-line"><span id="eventResultCount">3 upcoming events</span><span>Dates and deadlines shown in local time</span></div>
+      <div id="eventsGrid" class="content-grid events-grid"></div>
+    </section>
+
+    <section class="page" id="page-chat">
+      <div class="page-heading"><div><p class="eyebrow">STAY CONNECTED</p><h1>Messages</h1><p class="subheading">Talk with coordinators and keep your work moving.</p></div><button class="btn secondary" id="clearChatBtn">Clear conversation</button></div>
+      <div class="chat-layout">
+        <aside class="chat-contacts"><div class="contact-search">⌕ <input id="contactSearch" placeholder="Search conversations" /></div><div class="contact active" data-contact="Coordinator"><div class="contact-avatar violet">CC</div><div class="contact-details"><strong>Program Coordinator</strong><p id="lastCoordinator">Welcome! How can I help?</p></div><span class="online-dot"></span></div><div class="contact" data-contact="Career Team"><div class="contact-avatar blue">CT</div><div class="contact-details"><strong>Career Team</strong><p>New internship opportunities</p></div></div><div class="contact" data-contact="Support"><div class="contact-avatar orange">?</div><div class="contact-details"><strong>Support</strong><p>We’re here to help</p></div></div></aside>
+        <div class="chat-panel"><div class="chat-header"><div class="contact-avatar violet" id="chatAvatar">CC</div><div><strong id="chatTitle">Program Coordinator</strong><small><span class="online-dot"></span> Usually replies within a day</small></div><button class="icon-btn chat-more" id="chatInfoBtn" aria-label="Conversation info">ⓘ</button></div><div id="chatMessages" class="chat-messages" aria-live="polite"></div><form id="chatForm" class="chat-compose"><button type="button" id="attachBtn" class="compose-icon" aria-label="Attach a file">＋</button><input id="chatInput" maxlength="500" placeholder="Write a message..." autocomplete="off" required /><button type="submit" class="send-btn">Send <span>↑</span></button></form><div class="chat-note">Be kind and keep messages professional.</div></div>
+      </div>
+    </section>
+    <footer class="footer"><span>© 2026 CampusConnect · Student workspace mockup</span><span>Made for learning and demonstration</span></footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="modal-backdrop" id="modalBackdrop">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head"><div><p class="eyebrow">WORKSPACE FORM</p><h2 id="modalTitle">Add item</h2></div><button class="icon-btn" id="closeModal" aria-label="Close dialog">×</button></div>
+      <form id="itemForm"><div id="modalFields" class="modal-fields"></div><div class="modal-actions"><button type="button" class="btn secondary" id="cancelModal">Cancel</button><button type="submit" class="btn primary">Save details</button></div></form>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
